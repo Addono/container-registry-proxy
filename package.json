@@ -11,6 +11,10 @@
     "start": "ts-node src/index.ts",
     "build": "tsc"
   },
+  "bin": {
+    "container-registry-proxy": "./bin/index.js",
+    "crp": "./bin/index.js"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
