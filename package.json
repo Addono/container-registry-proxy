@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts"
   },
   "bin": {
     "container-registry-proxy": "./bin/index.js",
