@@ -6,5 +6,8 @@
   "repository": "https://github.com/Addono/container-registry-proxy.git",
   "author": "Adriaan Knapen <hi@aknapen.nl>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "husky": "^4.2.5"
+  }
 }
