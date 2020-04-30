@@ -1,0 +1,10 @@
+{
+  "name": "container-registry-proxy",
+  "version": "0.0.1",
+  "description": "A simple container registry proxy.",
+  "main": "index.js",
+  "repository": "https://github.com/Addono/container-registry-proxy.git",
+  "author": "Adriaan Knapen <hi@aknapen.nl>",
+  "license": "MIT",
+  "private": false
+}
