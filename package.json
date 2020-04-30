@@ -1,6 +1,6 @@
 {
   "name": "container-registry-proxy",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "A simple container registry proxy.",
   "main": "src/index.ts",
   "repository": "https://github.com/Addono/container-registry-proxy.git",
@@ -37,7 +37,9 @@
     "ts-node-dev": "^1.0.0-pre.44"
   },
   "release": {
-    "branches": ["master"],
+    "branches": [
+      "master"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
