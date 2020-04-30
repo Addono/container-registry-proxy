@@ -7,6 +7,11 @@
   "author": "Adriaan Knapen <hi@aknapen.nl>",
   "license": "MIT",
   "private": false,
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
