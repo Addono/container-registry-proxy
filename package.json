@@ -7,6 +7,10 @@
   "author": "Adriaan Knapen <hi@aknapen.nl>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
