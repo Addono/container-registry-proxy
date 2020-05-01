@@ -1,10 +1,10 @@
 # Container Registry Proxy
 
+[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/network)
 [![GitHub issues](https://img.shields.io/github/issues/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/pulls)
 [![GitHub license](https://img.shields.io/github/license/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/network)
 
 ## 📝 Table of Contents
 
