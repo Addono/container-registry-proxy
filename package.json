@@ -31,6 +31,7 @@
     "@semantic-release/npm": "^7.0.5",
     "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/node": "^13.13.4",
+    "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.5",
     "semantic-release": "^17.0.7",
     "ts-node": "^8.9.1",
@@ -47,5 +48,10 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
