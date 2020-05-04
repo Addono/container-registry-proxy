@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Addono",
+      "name": "Adriaan Knapen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15435678?v=4",
+      "profile": "https://aknapen.nl",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "container-registry-proxy",
+  "projectOwner": "Addono",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
