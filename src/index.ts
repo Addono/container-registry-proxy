@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
     return
   }
 
-  console.log(`==> Forwarding request to ${url} \n`)
+  console.log(`==> Forwarding request to ${url}\n`)
 
   console.log('\t-> ', req.headers)
 
@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
       // fix host and pass through.
       if (statusCode && [301, 302, 303].includes(statusCode)) {
         statusCode = 303
-        headers['location'] = 'http://localhost:' + PORT + '/' + headers['location']
+        headers['location'] = `http://localhost:${PORT}/${headers['location']}`
 
         console.log('\t-> Redirecting to ', headers['location'])
 
