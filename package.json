@@ -40,6 +40,11 @@
     "semantic-release": "^17.0.7",
     "ts-node-dev": "^1.0.0-pre.44"
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 110
+  },
   "release": {
     "branches": [
       "master"
