@@ -5,6 +5,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/pulls)
 [![GitHub license](https://img.shields.io/github/license/Addono/container-registry-proxy?style=for-the-badge)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dw/container-registry-proxy?style=for-the-badge)](https://www.npmjs.com/package/container-registry-proxy)
+[![npm](https://img.shields.io/npm/v/container-registry-proxy?style=for-the-badge)](https://www.npmjs.com/package/container-registry-proxy)
 
 ## 📝 Table of Contents
 
