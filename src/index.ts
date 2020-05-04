@@ -9,9 +9,7 @@ const server = http.createServer((req, res) => {
   const failRequest = (message: string) => {
     console.error(message)
 
-    res
-      .writeHead(500, { 'content-type': 'text/plain' })
-      .end(message)
+    res.writeHead(500, { 'content-type': 'text/plain' }).end(message)
   }
 
   console.log(req.headers, req.url)
@@ -19,7 +17,7 @@ const server = http.createServer((req, res) => {
   const matches = req.url?.match(URL_REGEX)
 
   if (!matches) {
-    return failRequest("Failed parsing the url")
+    return failRequest('Failed parsing the url')
   }
 
   const [_, version, domain, port, image, method, reference]: string[] = matches
@@ -27,7 +25,8 @@ const server = http.createServer((req, res) => {
   console.log(`Method: ${method}`)
 
   let url: string
-  if (!domain) {  // Return a plain 200 when the domain was not part of the url
+  if (!domain) {
+    // Return a plain 200 when the domain was not part of the url
     res.statusCode = 200
     res.end()
     return
@@ -45,42 +44,46 @@ const server = http.createServer((req, res) => {
   // Pause the ongoing request until the forwarded request returns
   req.pause()
 
-  const connection = http.request(url, {
-    headers: {
-      ...req.headers,
-      host: domain,  // Overwrite the host as the prevent certificate issues
+  const connection = http.request(
+    url,
+    {
+      headers: {
+        ...req.headers,
+        host: domain, // Overwrite the host as the prevent certificate issues
+      },
+      method: req.method,
+      agent: false,
     },
-    method: req.method,
-    agent: false,
-  }, (serverResponse) => {
-    let { statusCode, headers } = serverResponse
+    (serverResponse) => {
+      let { statusCode, headers } = serverResponse
 
-    console.log('<== Received response for', statusCode, url)
-    console.log('\t-> Response Headers: ', headers)
+      console.log('<== Received response for', statusCode, url)
+      console.log('\t-> Response Headers: ', headers)
 
-    serverResponse.pause()
+      serverResponse.pause()
 
-    // fix host and pass through.  
-    if (statusCode && [301, 302, 303].includes(statusCode)) {
-      statusCode = 303
-      headers['location'] = 'http://localhost:' + PORT + '/' + headers['location']
+      // fix host and pass through.
+      if (statusCode && [301, 302, 303].includes(statusCode)) {
+        statusCode = 303
+        headers['location'] = 'http://localhost:' + PORT + '/' + headers['location']
 
-      console.log('\t-> Redirecting to ', headers['location'])
+        console.log('\t-> Redirecting to ', headers['location'])
 
-      res.writeHead(statusCode, headers)
-      serverResponse.pipe(res)
-    } else if (statusCode && 200 <= statusCode && statusCode < 500) {
-      res.writeHead(statusCode, headers)
-      serverResponse.pipe(res)
-    } else {
-      const stringifiedHeaders = JSON.stringify(headers, null, 4)
-      return failRequest(`Error ${statusCode}\n${stringifiedHeaders}`)
+        res.writeHead(statusCode, headers)
+        serverResponse.pipe(res)
+      } else if (statusCode && 200 <= statusCode && statusCode < 500) {
+        res.writeHead(statusCode, headers)
+        serverResponse.pipe(res)
+      } else {
+        const stringifiedHeaders = JSON.stringify(headers, null, 4)
+        return failRequest(`Error ${statusCode}\n${stringifiedHeaders}`)
+      }
+
+      serverResponse.resume()
+
+      console.log('\n\n')
     }
-
-    serverResponse.resume()
-    
-    console.log('\n\n')
-  })
+  )
 
   req.pipe(connection)
   req.resume()

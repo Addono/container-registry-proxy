@@ -47,7 +47,6 @@ yarn start
 yarn dev
 ```
 
-
 ## 🔧 Running the Tests <a name = "tests"></a>
 
 After setting up the development environment, tests can be invoked using:
