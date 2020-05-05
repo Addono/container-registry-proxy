@@ -1,4 +1,4 @@
-name: Automatically create PRs for detected spelling mistakes.
+name: 'Misspell: Detect spelling mistakes'
 
 on:
   push:
