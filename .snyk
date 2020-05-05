@@ -40,3 +40,59 @@ patch:
         patched: '2020-05-05T12:43:49.722Z'
     - cz-conventional-changelog > commitizen > cz-conventional-changelog > @commitlint/load > @commitlint/resolve-extends > lodash:
         patched: '2020-05-05T12:43:49.722Z'
+    - '@commitlint/cli > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/exec > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/git > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/npm > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/release-notes-generator > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/release-notes-generator > conventional-commits-parser > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/lint > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/load > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > @commitlint/load > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/config-conventional > conventional-changelog-conventionalcommits > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/npm > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@semantic-release/release-notes-generator > conventional-changelog-writer > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/release-notes-generator > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > commitizen > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/commit-analyzer > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/github > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/release-notes-generator > conventional-commits-parser > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/commit-analyzer > conventional-commits-parser > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/lint > @commitlint/parse > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/load > @commitlint/resolve-extends > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > @commitlint/load > @commitlint/resolve-extends > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - semantic-release > @semantic-release/release-notes-generator > conventional-changelog-writer > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > commitizen > inquirer > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/lint > @commitlint/parse > conventional-commits-parser > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - '@commitlint/cli > @commitlint/lint > @commitlint/rules > @commitlint/ensure > lodash':
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > commitizen > cz-conventional-changelog > @commitlint/load > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
+    - cz-conventional-changelog > commitizen > cz-conventional-changelog > @commitlint/load > @commitlint/resolve-extends > lodash:
+        patched: '2020-05-05T12:47:26.332Z'
