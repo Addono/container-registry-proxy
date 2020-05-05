@@ -1,0 +1,15 @@
+name: Automatically create PRs for detected spelling mistakes.
+
+on:
+  push:
+
+jobs:
+  misspell:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: sobolevn/misspell-fixer-action@master
+      - uses: peter-evans/create-pull-request@v2.4.4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
