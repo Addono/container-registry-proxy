@@ -1,6 +1,7 @@
 # Container Registry Proxy
 
-[![GitHub license](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://img.shields.io/badge/project%20status-WIP-yellow?style=flat-square)](https://www.repostatus.org/#wip)
 [![npm](https://img.shields.io/npm/dw/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
 [![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
 [![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/stargazers)
