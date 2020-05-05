@@ -1,0 +1,18 @@
+# Default to ignoring all files and folders starting with a dot
+.*
+
+# Make an exception for .babelrc
+!.babelrc
+
+# Ignore the coverage directory
+coverage/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore documentation
+.md
+.txt
+
+# Ignore logs
+.log
