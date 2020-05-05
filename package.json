@@ -57,7 +57,18 @@
       "@semantic-release/npm",
       "@semantic-release/git",
       "@semantic-release/github",
-      "semantic-release-docker"
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "docker build -t addono/container-registry-proxy ."
+        }
+      ],
+      [
+        "semantic-release-docker",
+        {
+          "name": "addono/container-registry-proxy"
+        }
+      ]
     ]
   },
   "config": {
