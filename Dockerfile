@@ -1,5 +1,8 @@
 ARG NODE_IMAGE=node:12
 
+# Temporary variable as a workaround to use DevSpace code reloading
+ARG USER=node
+
 # Build the application
 FROM ${NODE_IMAGE} AS builder
 
@@ -27,6 +30,6 @@ EXPOSE 8080
 
 # Run the application as a different user than root
 # https://github.com/goldbergyoni/nodebestpractices/blob/master/sections/security/non-root-user.md
-USER node
+USER $USER
 
 ENTRYPOINT ["node", "dist/index"]

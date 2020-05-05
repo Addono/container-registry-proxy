@@ -1,0 +1,39 @@
+version: v1beta9
+images:
+  app:
+    image: dscr.io/${DEVSPACE_USERNAME}/container-registry-proxy
+    preferSyncOverRebuild: true
+    injectRestartHelper: true
+    build:
+      docker:
+        options:
+          buildArgs:
+            USER: root # Workaround to support code reloading in dev
+deployments:
+  - name: container-registry-proxy
+    helm:
+      componentChart: true
+      values:
+        containers:
+          - image: dscr.io/${DEVSPACE_USERNAME}/container-registry-proxy
+        service:
+          ports:
+            - port: 8080
+dev:
+  ports:
+    - imageName: app
+      forward:
+        - port: 8080
+  open:
+    - url: http://localhost:8080
+  sync:
+    - imageName: app
+      localSubPath: ./dist
+      containerPath: ./dist
+      onUpload:
+        restartContainer: true
+profiles:
+  - name: production
+    patches:
+      - op: remove
+        path: images.app.injectRestartHelper
