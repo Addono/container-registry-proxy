@@ -1,8 +1,8 @@
 # Default to ignoring all files and folders starting with a dot
 .*
 
-# Make an exception for .babelrc
-!.babelrc
+# Make an exception for .snyk
+!.snyk
 
 # Ignore the coverage directory
 coverage/

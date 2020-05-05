@@ -10,6 +10,9 @@ FROM ${NODE_IMAGE} AS builder
 COPY package.json .
 COPY yarn.lock .
 
+# Retrieve the Snyk manifest
+COPY .snyk .
+
 RUN yarn install --frozen-lockfile
 
 # Build the application from source
