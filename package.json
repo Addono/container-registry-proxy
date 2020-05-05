@@ -10,7 +10,9 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "bin": {
     "container-registry-proxy": "./bin/index.js",
@@ -24,7 +26,8 @@
   },
   "dependencies": {
     "ts-node": "^8.9.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "snyk": "^1.319.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -78,5 +81,6 @@
   },
   "lint-staged": {
     "*.{json,js,ts,css,md,yml,yaml}": "prettier --write"
-  }
+  },
+  "snyk": true
 }
