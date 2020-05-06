@@ -17,8 +17,8 @@
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Running the Tests](#tests)
-- [Deployment](#deployment)
 - [Usage](#usage)
+- [Deployment](#deployment)
 - [Contributors](#contributors)
 
 ## 🧐 About <a name = "about"></a>
@@ -41,7 +41,9 @@ First we need to install all dependencies, run:
 yarn install
 ```
 
-To start the development environment, run:
+### Running Locally
+
+To start the development environment using either of the following commands:
 
 ```bash
 # Without file watching
@@ -51,6 +53,46 @@ yarn start
 yarn dev
 ```
 
+### Running in Kubernetes using DevSpace
+
+Build the application, the `--watch` flag is optional and enables automatic hotreloading:
+
+```bash
+yarn build --watch
+```
+
+Then to configure and launch [DevSpace](https://devspace.sh/) run:
+
+```bash
+# Configure DevSpace to the desired namespace
+devspace use namespace container-registry-provider
+
+# Deploy a development version onto K8s
+devspace dev
+```
+
+## 🎈 Usage <a name="usage"></a>
+
+Once you have a proxy running, you can use it like this:
+
+```bash
+# For https://hub.docker.com/r/addono/container-registry-proxy
+docker pull localhost:8080/addono/container-registry-proxy
+
+# For https://hub.docker.com/_/nginx
+docker pull localhost:8080/library/nginx
+```
+
+> Note: If your Docker daemon is running in a VM, which would be the case if you're using Docker Toolbox on Mac, then pulling directly from localhost will not work. One workaround is using ngrok to have a publicly available domain name to connect to:
+>
+> ```bash
+> # Note the ngrok domain assigned to you
+> ngrok http 8080
+>
+> # Make sure to replace the ngrok domain name
+> docker pull 5d354ae8.ngrok.io/library/nginx
+> ```
+
 ## 🔧 Running the Tests <a name = "tests"></a>
 
 After setting up the development environment, tests can be invoked using:
@@ -59,19 +101,12 @@ After setting up the development environment, tests can be invoked using:
 yarn test
 ```
 
-## 🎈 Usage <a name="usage"></a>
-
-Execute:
-
-```bash
-yarn build
-```
-
-Which builds the app for production to the `dist` folder.
-
 ## 🚀 Deployment <a name = "deployment"></a>
 
-We automatically build and deploy the latest version to NPM.
+We automatically build and deploy the latest version and all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
+
+- [NPM](https://www.npmjs.com/package/container-registry-proxy)
+- [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
 
 ## ✨ Contributors <a name = "contributors"></a>
 
