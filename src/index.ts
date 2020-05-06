@@ -1,9 +1,11 @@
 import http from 'http'
 import https from 'https'
 
-const PORT = process.argv[2] || 8080
+const PORT: string = process.env?.PORT || '8080'
+const REGISTRY_HOST: string = process.env?.REGISTRY_HOST || 'registry.hub.docker.com'
+const HTTPS: boolean = true
 
-const URL_REGEX = /^\/([\w\d]*)\/(?:([^\/]*)\/(\d{1,6})\/([\s\S]+)\/(manifests|blobs)\/([\w\d:]+))?$/
+const URL_REGEX = /^\/([\w\d]*)\/(?:([\s\S]+)\/(manifests|blobs)\/([\w\d:]+))?$/
 
 const server = http.createServer((req, res) => {
   const failRequest = (message: string) => {
@@ -20,18 +22,15 @@ const server = http.createServer((req, res) => {
     return failRequest(`Failed parsing path "${req.url}".`)
   }
 
-  const [_, version, domain, port, image, method, reference]: string[] = matches
+  const [, version, image, method, reference]: string[] = matches
 
   console.log(`Method: ${method}`)
 
   let url: string
-  if (!domain) {
-    // Return a plain 200 when the domain was not part of the url
-    res.statusCode = 200
-    res.end()
-    return
+  if (!method) {
+    url = `${REGISTRY_HOST}/${version}/`
   } else if (method == 'manifests' || method == 'blobs') {
-    url = `http://${domain}:${port}/${version}/${image}/${method}/${reference}`
+    url = `${REGISTRY_HOST}/${version}/${image}/${method}/${reference}`
   } else {
     failRequest(`Unknown method ${method}`)
     return
@@ -44,12 +43,12 @@ const server = http.createServer((req, res) => {
   // Pause the ongoing request until the forwarded request returns
   req.pause()
 
-  const connection = http.request(
-    url,
+  const connection = (HTTPS ? https : http).request(
+    `${HTTPS ? 'https' : 'http'}://${url}`,
     {
       headers: {
         ...req.headers,
-        host: domain, // Overwrite the host as the prevent certificate issues
+        host: REGISTRY_HOST, // Overwrite the host as the prevent certificate issues
       },
       method: req.method,
       agent: false,
