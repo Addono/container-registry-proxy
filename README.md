@@ -65,7 +65,7 @@ Then to configure and launch [DevSpace](https://devspace.sh/) run:
 
 ```bash
 # Configure DevSpace to the desired namespace
-devspace use namespace container-registry-provider
+devspace use namespace container-registry-proxy
 
 # Deploy a development version onto K8s
 devspace dev
