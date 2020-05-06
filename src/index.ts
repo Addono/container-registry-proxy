@@ -5,6 +5,16 @@ const PORT: string = process.env?.PORT || '8080'
 const REGISTRY_HOST: string = process.env?.REGISTRY_HOST || 'registry.hub.docker.com'
 const HTTPS: boolean = true
 
+const settingsFormatted: string = [
+  ['PORT', PORT],
+  ['REGISTRY_HOST', REGISTRY_HOST],
+  ['HTTPS', HTTPS],
+]
+  .map(([key, value]) => ` - ${key}=${value}`)
+  .reduce((a, b) => `${a}\n${b}`)
+
+console.log(`Configuration:\n${settingsFormatted}\n`)
+
 const URL_REGEX = /^\/([\w\d]*)\/(?:([\s\S]+)\/(manifests|blobs)\/([\w\d:]+))?$/
 
 const server = http.createServer((req, res) => {
