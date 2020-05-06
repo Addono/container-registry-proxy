@@ -2,7 +2,7 @@
   "name": "container-registry-proxy",
   "version": "2.0.0",
   "description": "A simple container registry proxy.",
-  "main": "src/index.ts",
+  "main": "bin/index.js",
   "repository": "https://github.com/Addono/container-registry-proxy.git",
   "author": "Adriaan Knapen <hi@aknapen.nl>",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "build": "tsc",
     "dev": "ts-node-dev src/index.ts",
     "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "prepare": "yarn run snyk-protect && yarn build"
   },
   "bin": {
     "container-registry-proxy": "./bin/index.js",
@@ -60,7 +60,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "yarn install && yarn build"
+          "prepareCmd": "yarn install --frozen-lockfile"
         }
       ],
       [
