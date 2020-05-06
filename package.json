@@ -57,15 +57,21 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/git",
-      "@semantic-release/github",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "yarn install && yarn build"
+        }
+      ],
       [
         "@semantic-release/exec",
         {
           "prepareCmd": "docker build -t addono/container-registry-proxy ."
         }
       ],
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github",
       [
         "semantic-release-docker",
         {
