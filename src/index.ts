@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
   const matches = req.url?.match(URL_REGEX)
 
   if (!matches) {
-    return failRequest('Failed parsing the url')
+    return failRequest(`Failed parsing path "${req.url}".`)
   }
 
   const [_, version, domain, port, image, method, reference]: string[] = matches
