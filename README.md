@@ -103,10 +103,41 @@ yarn test
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-We automatically build and deploy the latest version and all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
+We automatically build and deploy all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
 
 - [NPM](https://www.npmjs.com/package/container-registry-proxy)
 - [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
+
+### NPM
+
+Install the application locally:
+
+```bash
+# Install globally in NPM
+npm install -g container-registry-proxy
+
+# Install globally in Yarn
+yarn global add container-registry-proxy
+```
+
+Start the proxy:
+
+```bash
+# Full command
+container-registry-proxy
+
+# A short name is also available
+crp
+
+# Configuration is done using environment variables
+PORT=80 container-registry-proxy
+```
+
+### Docker
+
+```bash
+docker run --rm -it -p 8080:8080 --name crp addono/container-registry-proxy
+```
 
 ## ✨ Contributors <a name = "contributors"></a>
 
