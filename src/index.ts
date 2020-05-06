@@ -89,6 +89,6 @@ const server = http.createServer((req, res) => {
   req.resume()
 })
 
-console.log(`Listening on http://localhost:${PORT}...`)
+console.log('Starting server...\n')
 
-server.listen(PORT)
+server.listen(PORT, () => console.log(`Server started on http://localhost:${PORT} 🚀\n`))
