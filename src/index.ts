@@ -1,9 +1,9 @@
 import http from 'http'
 import https from 'https'
 
-const PORT: string = process.env?.PORT || '8080'
-const REGISTRY_HOST: string = process.env?.REGISTRY_HOST || 'registry.hub.docker.com'
-const HTTPS: boolean = true
+const PORT: string = process.env?.PORT ?? '8080'
+const REGISTRY_HOST: string = process.env?.REGISTRY_HOST ?? 'registry.hub.docker.com'
+const HTTPS: boolean = process.env?.HTTPS?.toLowerCase() != 'false' ?? true
 
 const settingsFormatted: string = [
   ['PORT', PORT],
