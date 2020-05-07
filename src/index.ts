@@ -1,5 +1,6 @@
 import http from 'http'
 import https from 'https'
+import proxyUrlParser, { Method } from './proxyUrlParser'
 
 const PORT: string = process.env?.PORT ?? '8080'
 const REGISTRY_HOST: string = process.env?.REGISTRY_HOST ?? 'registry.hub.docker.com'
@@ -26,25 +27,20 @@ const server = http.createServer((req, res) => {
 
   console.log(req.headers, req.url)
 
-  const matches = req.url?.match(URL_REGEX)
-
-  if (!matches) {
-    return failRequest(`Failed parsing path "${req.url}".`)
+  if (!req.url) {
+    return failRequest('Path cannot be empty')
   }
 
-  const [, version, image, method, reference]: string[] = matches
-
-  console.log(`Method: ${method}`)
-
-  let url: string
-  if (!method) {
-    url = `${REGISTRY_HOST}/${version}/`
-  } else if (method == 'manifests' || method == 'blobs') {
-    url = `${REGISTRY_HOST}/${version}/${image}/${method}/${reference}`
-  } else {
-    failRequest(`Unknown method ${method}`)
-    return
+  const containerRegistryRequest = proxyUrlParser(req.url)
+  if (!containerRegistryRequest) {
+    return failRequest(`Could not parse url "${req.url}"`)
   }
+
+  const { version, parameters } = containerRegistryRequest
+
+  const url = parameters
+    ? `${REGISTRY_HOST}/${version}/${parameters.repository}/${Method[parameters.method]}/${parameters.tag}`
+    : `${REGISTRY_HOST}/${version}/`
 
   console.log(`==> Forwarding request to ${url}\n`)
 
