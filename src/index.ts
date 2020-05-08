@@ -16,8 +16,6 @@ const settingsFormatted: string = [
 
 console.log(`Configuration:\n${settingsFormatted}\n`)
 
-const URL_REGEX = /^\/([\w\d]*)\/(?:([\s\S]+)\/(manifests|blobs)\/([\w\d:]+))?$/
-
 const server = http.createServer((req, res) => {
   const failRequest = (message: string) => {
     console.error(message)
