@@ -1,4 +1,5 @@
-import proxyUrlParser, { Method } from '../proxyUrlParser'
+import proxyUrlParser from '../proxyUrlParser'
+import { Method } from '../plugins'
 
 describe('test proxy url parser', () => {
   it('parses a /v2/ version check call', () => {

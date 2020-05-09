@@ -1,10 +1,12 @@
 import http from 'http'
 import https from 'https'
-import proxyUrlParser, { Method } from './proxyUrlParser'
+import proxyUrlParser from './proxyUrlParser'
+import { loadPlugins, Method } from './plugins'
+import tagChaos from './plugins/tagChaos'
 
 const PORT: string = process.env?.PORT ?? '8080'
-const REGISTRY_HOST: string = process.env?.REGISTRY_HOST ?? 'registry.hub.docker.com'
-const HTTPS: boolean = process.env?.HTTPS?.toLowerCase() != 'false' ?? true
+export const REGISTRY_HOST: string = process.env?.REGISTRY_HOST ?? 'registry.hub.docker.com'
+export const HTTPS: boolean = process.env?.HTTPS?.toLowerCase() != 'false' ?? true
 
 const settingsFormatted: string = [
   ['PORT', PORT],
@@ -16,14 +18,16 @@ const settingsFormatted: string = [
 
 console.log(`Configuration:\n${settingsFormatted}\n`)
 
-const server = http.createServer((req, res) => {
+const { requestPipe } = loadPlugins()
+
+const server = http.createServer(async (req, res) => {
   const failRequest = (message: string) => {
     console.error(message)
 
     res.writeHead(500, { 'content-type': 'text/plain' }).end(message)
   }
 
-  console.log(req.headers, req.url)
+  console.log('Received request for ', req.url)
 
   if (!req.url) {
     return failRequest('Path cannot be empty')
@@ -34,7 +38,12 @@ const server = http.createServer((req, res) => {
     return failRequest(`Could not parse url "${req.url}"`)
   }
 
-  const { version, parameters } = containerRegistryRequest
+  const requestPostPipe = await requestPipe(containerRegistryRequest)
+  if (!requestPostPipe) {
+    return failRequest(`Request aborted by plugins`)
+  }
+
+  const { version, parameters } = requestPostPipe
 
   const url = parameters
     ? `${REGISTRY_HOST}/${version}/${parameters.repository}/${Method[parameters.method]}/${parameters.tag}`
@@ -45,7 +54,7 @@ const server = http.createServer((req, res) => {
 
   console.log(`==> Forwarding request to ${url}\n`)
 
-  console.log('\t-> ', req.headers)
+  // console.log('\t-> ', req.headers)
 
   const connection = (HTTPS ? https : http).request(
     `${HTTPS ? 'https' : 'http'}://${url}`,
@@ -61,7 +70,7 @@ const server = http.createServer((req, res) => {
       let { statusCode, headers } = serverResponse
 
       console.log('<== Received response for', statusCode, url)
-      console.log('\t-> Response Headers: ', headers)
+      // console.log('\t-> Response Headers: ', headers)
 
       serverResponse.pause()
 

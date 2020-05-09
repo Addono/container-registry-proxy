@@ -1,3 +1,5 @@
+import { Request, Method } from './plugins'
+
 /*
  * Group 1: version
  * Optional:
@@ -7,21 +9,7 @@
  */
 const URL_REGEX = /^\/([\w\d]*)\/(?:([\s\S]+)\/(manifests|blobs)\/([\s\S]+))?$/
 
-export enum Method {
-  'manifests',
-  'blobs',
-}
-
-export type ContainerRegistryRequest = {
-  version: string
-  parameters?: {
-    repository: string
-    method: Method
-    tag: string
-  }
-}
-
-const proxyUrlParser: (url: string) => ContainerRegistryRequest | undefined = (url) => {
+const proxyUrlParser: (url: string) => Request | undefined = (url) => {
   const matches = url.match(URL_REGEX)
 
   // Return undefined in case the URL could not be parsed
