@@ -23,7 +23,7 @@
 
 ## 🧐 About <a name = "about"></a>
 
-The Container Registry Proxy is a small proxy for communicating with a container registry. The end-goal of the project is to allow alternating traffic in-transit as to facilitate chaos engineering.
+The Container Registry Proxy is a small proxy for communicating with a container registry. The end-goal of the project is to allow modifying traffic in-transit as to facilitate chaos engineering.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
