@@ -41,8 +41,6 @@ const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
 
     console.log(`==> Forwarding request to ${url}\n`)
 
-    // console.log('\t-> ', req.headers)
-
     const connection = (HTTPS ? https : http).request(
       `${HTTPS ? 'https' : 'http'}://${url}`,
       {
@@ -57,7 +55,6 @@ const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
         let { statusCode, headers } = serverResponse
 
         console.log('<== Received response for', statusCode, url)
-        // console.log('\t-> Response Headers: ', headers)
 
         serverResponse.pause()
 
