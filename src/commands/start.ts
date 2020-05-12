@@ -6,6 +6,7 @@ export interface StartArguments {
   registry: string
   http: string
   plugin: string[] | undefined
+  customPlugin: string[] | undefined
 }
 
 const printArguments = ({ port, registry, http, plugin }: StartArguments) => {
@@ -26,8 +27,8 @@ const start = (args: StartArguments) => {
   printArguments(args)
 
   // Load all plugins
-  const { port, registry, http, plugin: plugins = [] } = args
-  const loadedPlugins: Plugin = loadPlugins(plugins)
+  const { port, registry, http, plugin: plugins = [], customPlugin: customPlugins = [] } = args
+  const loadedPlugins: Plugin = loadPlugins(plugins, customPlugins)
 
   // Create the proxy server
   const server = proxyServer(loadedPlugins, { https: !http, port, registry })
