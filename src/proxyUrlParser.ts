@@ -1,4 +1,4 @@
-import { Request, Method } from './plugins'
+import { Method, RelativeRequest } from './plugins'
 
 /*
  * Group 1: version
@@ -9,7 +9,7 @@ import { Request, Method } from './plugins'
  */
 const URL_REGEX = /^\/([\w\d]*)\/(?:([\s\S]+)\/(manifests|blobs)\/([\s\S]+))?$/
 
-const proxyUrlParser: (url: string) => Request | undefined = (url) => {
+const proxyUrlParser: (url: string) => RelativeRequest | undefined = (url) => {
   const matches = url.match(URL_REGEX)
 
   // Return undefined in case the URL could not be parsed

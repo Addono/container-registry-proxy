@@ -3,10 +3,12 @@ import https from 'https'
 
 import proxyUrlParser from './proxyUrlParser'
 import { Method } from './plugins'
-import { HTTPS, PORT, REGISTRY_HOST } from './index'
 import { Plugin } from './plugins'
 
-const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
+const proxyServer: (plugin: Plugin, args: { https: boolean; port: string; registry: string }) => Server = (
+  { requestPipe },
+  { https: useHttps, port, registry }
+) =>
   http.createServer(async (req, res) => {
     const failRequest = (message: string) => {
       console.error(message)
@@ -20,12 +22,12 @@ const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
       return failRequest('Path cannot be empty')
     }
 
-    const containerRegistryRequest = proxyUrlParser(req.url)
-    if (!containerRegistryRequest) {
+    const request = proxyUrlParser(req.url)
+    if (!request) {
       return failRequest(`Could not parse url "${req.url}"`)
     }
 
-    const requestPostPipe = await requestPipe(containerRegistryRequest)
+    const requestPostPipe = await requestPipe({ ...request, https: useHttps, host: registry })
     if (!requestPostPipe) {
       return failRequest(`Request aborted by plugins`)
     }
@@ -33,20 +35,20 @@ const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
     const { version, parameters } = requestPostPipe
 
     const url = parameters
-      ? `${REGISTRY_HOST}/${version}/${parameters.repository}/${Method[parameters.method]}/${parameters.tag}`
-      : `${REGISTRY_HOST}/${version}/`
+      ? `${registry}/${version}/${parameters.repository}/${Method[parameters.method]}/${parameters.tag}`
+      : `${registry}/${version}/`
 
     // Pause the ongoing request until the forwarded request returns
     req.pause()
 
     console.log(`==> Forwarding request to ${url}\n`)
 
-    const connection = (HTTPS ? https : http).request(
-      `${HTTPS ? 'https' : 'http'}://${url}`,
+    const connection = (useHttps ? https : http).request(
+      `${useHttps ? 'https' : 'http'}://${url}`,
       {
         headers: {
           ...req.headers,
-          host: REGISTRY_HOST, // Overwrite the host as the prevent certificate issues
+          host: registry, // Overwrite the host as the prevent certificate issues
         },
         method: req.method,
         agent: false,
@@ -82,7 +84,7 @@ const proxyServer: (plugin: Plugin) => Server = ({ requestPipe }) =>
           }
 
           const [, protocol, domain, path]: string[] = redirectLocationMatches
-          headers['location'] = protocol + domain.replace(REGISTRY_HOST, `localhost:${PORT}`) + path
+          headers['location'] = protocol + domain.replace(registry, `localhost:${port}`) + path
 
           statusCode = 303
           console.log('\t-> Redirecting to ', headers['location'])

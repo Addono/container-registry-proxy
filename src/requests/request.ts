@@ -1,8 +1,11 @@
-import axios from 'axios'
-import { HTTPS, REGISTRY_HOST } from '../index'
+import axios, { AxiosResponse } from 'axios'
 
-const request = (path: string) => {
-  const url = `${HTTPS ? 'https' : 'http'}://${REGISTRY_HOST}${path}`
+const request: (args: { host: string; path: string; https: boolean }) => Promise<AxiosResponse> = ({
+  host,
+  path,
+  https,
+}) => {
+  const url = `${https ? 'https' : 'http'}://${host}${path}`
 
   return axios.get(url)
 }
