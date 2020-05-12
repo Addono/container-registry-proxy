@@ -16,9 +16,9 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Running the Tests](#tests)
-- [Usage](#usage)
 - [Deployment](#deployment)
+- [Usage](#usage)
+- [Running the Tests](#tests)
 - [Contributors](#contributors)
 
 ## 🧐 About <a name = "about"></a>
@@ -71,7 +71,59 @@ devspace use namespace container-registry-proxy
 devspace dev
 ```
 
+## 🚀 Deployment <a name = "deployment"></a>
+
+We automatically build and deploy all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
+
+- [NPM](https://www.npmjs.com/package/container-registry-proxy)
+- [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
+
+### NPM
+
+Install the application locally:
+
+```bash
+# Install globally in NPM
+npm install -g container-registry-proxy
+
+# Install globally in Yarn
+yarn global add container-registry-proxy
+```
+
+Start the proxy:
+
+```bash
+# Full command
+container-registry-proxy --help
+
+# A short name is also available
+crp --help
+```
+
+### Docker
+
+```bash
+docker run --rm -it -p 8080:8080 --name crp addono/container-registry-proxy --help
+```
+
 ## 🎈 Usage <a name="usage"></a>
+
+The default configuration of the proxy can be overwritten during startup by adding flags:
+
+```bash
+$ container-registry-proxy start --help
+Usage: index start [options]
+
+Starts the proxy server
+
+Options:
+  --plugin <name>        Adds a plugin by name (default: [])
+  --port <port>          The port to launch the service on (default: "8080")
+  --registry <hostname>  The host to forward requests to (default:
+                         "registry.hub.docker.com")
+  --http                 Fall back to using HTTP instead of HTTPS
+  -h, --help             display help for command
+```
 
 Once you have a proxy running, you can use it like this:
 
@@ -99,44 +151,6 @@ After setting up the development environment, tests can be invoked using:
 
 ```bash
 yarn test
-```
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-We automatically build and deploy all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
-
-- [NPM](https://www.npmjs.com/package/container-registry-proxy)
-- [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
-
-### NPM
-
-Install the application locally:
-
-```bash
-# Install globally in NPM
-npm install -g container-registry-proxy
-
-# Install globally in Yarn
-yarn global add container-registry-proxy
-```
-
-Start the proxy:
-
-```bash
-# Full command
-container-registry-proxy
-
-# A short name is also available
-crp
-
-# Configuration is done using environment variables
-PORT=80 container-registry-proxy
-```
-
-### Docker
-
-```bash
-docker run --rm -it -p 8080:8080 --name crp addono/container-registry-proxy
 ```
 
 ## ✨ Contributors <a name = "contributors"></a>
