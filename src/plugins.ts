@@ -1,3 +1,5 @@
+import path from 'path'
+
 export type Request = {
   host: string
   https: boolean
@@ -23,7 +25,7 @@ export interface Plugin {
   requestPipe: RequestPipe
 }
 
-type RequestPipe = (req: Request) => Promise<Request>
+type RequestPipe = (req: Request) => Promise<Request | undefined>
 
 const identityPlugin: Plugin = {
   name: 'identity plugin',
@@ -31,20 +33,37 @@ const identityPlugin: Plugin = {
   requestPipe: async (req) => req,
 }
 
-export const loadPlugins: (pluginNames: string[]) => Plugin = (pluginNames) => {
-  const plugins: Plugin[] = pluginNames.map(
-    (pluginName) => <Plugin>require(`./plugins/${pluginName}`).default
-  )
+/**
+ * Chains the functionality of two plugins into one.
+ */
+const combinePlugins = (p1: Plugin, p2: Plugin): Plugin => ({
+  name: `${p1.name}+${p2.name}`,
+  requestPipe: async (req) => {
+    const resultP1 = await p1.requestPipe(req)
+
+    // Abort the pipe when one plugin requested to drop the request
+    if (resultP1 === undefined) {
+      return undefined
+    }
+
+    return p2.requestPipe(resultP1)
+  },
+})
+
+export const loadPlugins: (pluginNames: string[], customPluginPaths: string[]) => Plugin = (
+  pluginNames,
+  customPluginPaths
+) => {
+  const pluginPaths = pluginNames
+    .map((name) => `./plugins/${name}`)
+    .concat(customPluginPaths.map((customPluginPath) => path.resolve(customPluginPath)))
+
+  const plugins: Plugin[] = pluginPaths.map((pluginPath) => <Plugin>require(pluginPath).default)
 
   plugins.forEach(({ name, description }) =>
     console.log(`Loading plugin "${name}"`, description ? `: ${description}` : '')
   )
   console.log() // Insert empty line for better log formatting
 
-  const combinedPlugins: Plugin = (plugins.length ? plugins : [identityPlugin]).reduce((p1, p2) => ({
-    name: `${p1.name}+${p2.name}`,
-    requestPipe: async (req) => p2.requestPipe(await p1.requestPipe(req)),
-  }))
-
-  return combinedPlugins
+  return (plugins.length ? plugins : [identityPlugin]).reduce(combinePlugins)
 }
