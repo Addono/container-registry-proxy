@@ -145,6 +145,53 @@ docker pull localhost:8080/library/nginx
 > docker pull 5d354ae8.ngrok.io/library/nginx
 > ```
 
+### Custom Plugins
+
+Custom plugins are simple JavaScript modules implementing the [`Plugin`](./src/plugins.ts) interface, which are loaded in at runtime. An example of a custom plugin can be found [here](https://github.com/Addono/container-registry-proxy-custom-plugin-example). Assuming we have the `container-regsitry-proxy` installed locally and a plugin in `./dist/plugin.js`, then we can load this plugin using:
+
+```bash
+container-registry-proxy --customPlugin ./dist/plugin.js
+```
+
+### Creating Custom Plugins
+
+To create your own custom plugin, it is recommended to write it in TypeScript and compile it to JavaScript. It's easiest to fork or copy the [example plugin](https://github.com/Addono/container-registry-proxy-custom-plugin-example) and follow the instructions there, as it already incorporates various best-practices to ease development.
+
+Alternatively, a minimal approach on creating a plugin would follow the following steps:
+
+```bash
+yarn global add container-registry-proxy typescript
+```
+
+Create a file `plugin.ts` with the following content:
+
+```typescript
+import { Request, Plugin } from 'container-registry-proxy/dist/plugins'
+
+const plugin: Plugin = {
+  name: 'Logger',
+  description: 'Merely logs all requests',
+  requestPipe: async (request: Request) => {
+    console.log('LOGGER:', request)
+    return request
+  },
+}
+
+export default plugin
+```
+
+Now compile it into JavaScript:
+
+```bash
+tsc plugin.ts
+```
+
+Now, the plugin can be used by running:
+
+```bash
+container-registry-proxy --customPlugin plugin.js
+```
+
 ## 🔧 Running the Tests <a name = "tests"></a>
 
 After setting up the development environment, tests can be invoked using:
