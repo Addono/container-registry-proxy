@@ -112,15 +112,15 @@ The default configuration of the proxy can be overwritten during startup by addi
 
 ```bash
 $ container-registry-proxy start --help
-Usage: index start [options]
+Usage: container-registry-proxy start [options]
 
 Starts the proxy server
 
 Options:
-  --plugin <name>        Adds a plugin by name (default: [])
+  --plugin <name>        Adds a plugin by name, can be supplied multiple times (default: [])
+  --customPlugin <path>  Adds a custom plugin by path (default: [])
   --port <port>          The port to launch the service on (default: "8080")
-  --registry <hostname>  The host to forward requests to (default:
-                         "registry.hub.docker.com")
+  --registry <hostname>  The host to forward requests to (default: "registry.hub.docker.com")
   --http                 Fall back to using HTTP instead of HTTPS
   -h, --help             display help for command
 ```
