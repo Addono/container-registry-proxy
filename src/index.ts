@@ -1,24 +1,19 @@
-import { Plugin, loadPlugins } from './plugins'
-import proxyServer from './proxyServer'
+import commander from 'commander'
+import start, { StartArguments } from './commands/start'
 
-export const PORT: string = process.env?.PORT ?? '8080'
-export const REGISTRY_HOST: string = process.env?.REGISTRY_HOST ?? 'registry.hub.docker.com'
-export const HTTPS: boolean = process.env?.HTTPS?.toLowerCase() != 'false' ?? true
+const program = new commander.Command()
 
-const settingsFormatted: string = [
-  ['PORT', PORT],
-  ['REGISTRY_HOST', REGISTRY_HOST],
-  ['HTTPS', HTTPS],
-]
-  .map(([key, value]) => ` - ${key}=${value}`)
-  .reduce((a, b) => `${a}\n${b}`)
+const collectValues: (value: string, previous: string[]) => string[] = (value, previous) =>
+  previous.concat([value])
 
-console.log(`Configuration:\n${settingsFormatted}\n`)
+// Add the start command, which will act as our default entrypoint
+program
+  .command('start', { isDefault: true })
+  .description('Starts the proxy server')
+  .option('--plugin <name>', 'Adds a plugin by name, can be supplied multiple times', collectValues, [])
+  .option('--port <port>', 'The port to launch the service on', '8080')
+  .option('--registry <hostname>', 'The host to forward requests to', 'registry.hub.docker.com')
+  .option('--http', 'Fall back to using HTTP instead of HTTPS')
+  .action((args: StartArguments) => start(args))
 
-const plugins: Plugin = loadPlugins()
-
-const server = proxyServer(plugins)
-
-console.log('Starting server...\n')
-
-server.listen(PORT, () => console.log(`Server started on http://localhost:${PORT} 🚀\n`))
+program.parse(process.argv)

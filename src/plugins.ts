@@ -1,4 +1,9 @@
 export type Request = {
+  host: string
+  https: boolean
+} & RelativeRequest
+
+export type RelativeRequest = {
   version: string
   parameters?: {
     repository: string
@@ -26,10 +31,10 @@ const identityPlugin: Plugin = {
   requestPipe: async (req) => req,
 }
 
-export const loadPlugins: () => Plugin = () => {
-  const plugins: Plugin[] = process.argv
-    .slice(2)
-    .map((pluginName) => <Plugin>require(`./plugins/${pluginName}`).default)
+export const loadPlugins: (pluginNames: string[]) => Plugin = (pluginNames) => {
+  const plugins: Plugin[] = pluginNames.map(
+    (pluginName) => <Plugin>require(`./plugins/${pluginName}`).default
+  )
 
   plugins.forEach(({ name, description }) =>
     console.log(`Loading plugin "${name}"`, description ? `: ${description}` : '')
