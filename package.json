@@ -1,6 +1,6 @@
 {
   "name": "container-registry-proxy",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "A simple container registry proxy.",
   "main": "bin/index.js",
   "repository": "https://github.com/Addono/container-registry-proxy.git",
