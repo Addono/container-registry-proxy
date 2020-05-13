@@ -10,7 +10,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "test": "jest --roots src",
+    "test": "jest --roots src --coverage",
     "dev": "ts-node-dev src/index.ts",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect",
@@ -58,6 +58,13 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 110
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ]
   },
   "release": {
     "branches": [
