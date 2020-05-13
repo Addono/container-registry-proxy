@@ -5,7 +5,7 @@ repository:
   name: container-registry-proxy
 
   # A short description of the repository that will show up on GitHub
-  description: A simple proxy for container registries.
+  description: A proxy for modifying requests to container registries using plugins.
 
   # A URL with more information about the repository
   homepage: https://github.com/Addono/container-registry-proxy
