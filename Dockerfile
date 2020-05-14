@@ -21,13 +21,21 @@ COPY tsconfig.json .
 
 RUN yarn build
 
+# Remove all non-production dependencies
+RUN yarn install --production=true --frozen-lockfile
+
 # Define the image actually running
 FROM ${NODE_IMAGE}-alpine AS runner
+
+ENV NODE_ENV=production
 
 WORKDIR /application/
 
 # Retrieve the application distributable from the builder
 COPY --from=builder dist/ dist/
+
+# Install all prod dependencies
+COPY --from=builder node_modules/ node_modules/
 
 EXPOSE 8080
 
