@@ -30,9 +30,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "commander": "^5.1.0",
-    "snyk": "^1.320.3",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "snyk": "^1.320.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -52,6 +50,8 @@
     "semantic-release": "^17.0.7",
     "semantic-release-docker": "^2.2.0",
     "ts-jest": "^25.5.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3",
     "ts-node-dev": "^1.0.0-pre.44"
   },
   "prettier": {
