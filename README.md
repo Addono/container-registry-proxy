@@ -135,7 +135,9 @@ docker pull localhost:8080/addono/container-registry-proxy
 docker pull localhost:8080/library/nginx
 ```
 
-> Note: If your Docker daemon is running in a VM, which would be the case if you're using Docker Toolbox on Mac, then pulling directly from localhost will not work. One workaround is using ngrok to have a publicly available domain name to connect to:
+> Note: If your Docker daemon is running in a VM, which would be the case if you're using Docker Toolbox on Mac, then pulling directly from localhost will not work.
+>
+> One workaround is using ngrok to have a publicly available domain name to connect to. As an added benefit, this also gives HTTPS support out of the box:
 >
 > ```bash
 > # Note the ngrok domain assigned to you
