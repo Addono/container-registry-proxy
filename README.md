@@ -29,7 +29,7 @@ The Container Registry Proxy is a small proxy for communicating with a container
 
 Here's a small demo on how to use the proxy together with the build in Semantic Chaos-plugin. This plugin intercepts requests to resolve a tag to a specific container, and replaces this tag with a random tag which is within scope of the semantic versioning. In this case, the user requested tag `4`, the proxy then retrieves all tags which match `4.x.x` and returns one at-random to the user.
 
-[![Test](https://i.imgur.com/h9xG5ne.gif)](https://drive.google.com/file/d/1zj8AY0w1DauDcuBmUXLWPdjuIMry_QNN/view?usp=sharing)
+[![Demo](https://i.imgur.com/SXidWbc.gif)](https://i.imgur.com/h9xG5ne.mp4)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
