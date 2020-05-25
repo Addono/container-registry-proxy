@@ -1,14 +1,50 @@
-name: Release
+name: CI
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 13.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@722adc6 # v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@83c9f7a # v1.4.1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get Yarn's cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Restore cache
+        uses: actions/cache@70655ec # v1.1.2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test --coverage
+
+      - name: Collect coverage
+        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
+
   release:
     name: Release
     runs-on: ubuntu-18.04
+    needs: [build]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -31,3 +67,13 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_API_KEY }}
         run: npx semantic-release
+        if: github.ref == 'refs/heads/master' # Only release on master
+
+      - name: Release (dry-run)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_API_KEY }}
+        run: npx semantic-release --dry-run
+        if: github.ref != 'refs/heads/master' # Dry run on all other branches
