@@ -16,7 +16,12 @@ program
     collectValues,
     process.env.PLUGINS?.split(',') ?? []
   )
-  .option('--customPlugin <path>', 'Adds a custom plugin by path', collectValues, [])
+  .option(
+    '--customPlugin <path>',
+    'Adds a custom plugin by path Can also be set as a comma separated list using the CUSTOM_PLUGINS environment variable.',
+    collectValues,
+    process.env.CUSTOM_PLUGINS?.split(',') ?? []
+  )
   .option(
     '--port <port>',
     'The port to launch the service on. Can also be set using the PORT environment variable',
