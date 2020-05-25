@@ -32,7 +32,13 @@ program
     'The host to forward requests to. Can also be set using the REGISTRY environment variable.',
     process.env.REGISTRY ?? 'registry.hub.docker.com'
   )
-  .option('--http', 'Fall back to using HTTP instead of HTTPS')
+  .option(
+    '--http',
+    'Fall back to using HTTP instead of HTTPS. Can also be set by setting the HTTP environment variable to "true".',
+    process.env?.HTTP?.toLowerCase() === 'true' ?? false
+  )
   .action((args: StartArguments) => start(args))
+
+console.log(!!process.env.REGISTRY)
 
 program.parse(process.argv)
