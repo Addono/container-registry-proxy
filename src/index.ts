@@ -27,7 +27,11 @@ program
     'The port to launch the service on. Can also be set using the PORT environment variable',
     process.env.PORT ?? '8080'
   )
-  .option('--registry <hostname>', 'The host to forward requests to', 'registry.hub.docker.com')
+  .option(
+    '--registry <hostname>',
+    'The host to forward requests to. Can also be set using the REGISTRY environment variable.',
+    process.env.REGISTRY ?? 'registry.hub.docker.com'
+  )
   .option('--http', 'Fall back to using HTTP instead of HTTPS')
   .action((args: StartArguments) => start(args))
 
