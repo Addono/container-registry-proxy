@@ -10,7 +10,12 @@ const collectValues: (value: string, previous: string[]) => string[] = (value, p
 program
   .command('start', { isDefault: true })
   .description('Starts the proxy server')
-  .option('--plugin <name>', 'Adds a plugin by name, can be supplied multiple times', collectValues, [])
+  .option(
+    '--plugin <name>',
+    'Adds a plugin by name, can be supplied multiple times. Can also be set as a comma separated list using the PLUGINS environment variable.',
+    collectValues,
+    process.env.PLUGINS?.split(',') ?? []
+  )
   .option('--customPlugin <path>', 'Adds a custom plugin by path', collectValues, [])
   .option(
     '--port <port>',
