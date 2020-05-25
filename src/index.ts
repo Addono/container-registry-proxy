@@ -39,6 +39,4 @@ program
   )
   .action((args: StartArguments) => start(args))
 
-console.log(!!process.env.REGISTRY)
-
 program.parse(process.argv)
