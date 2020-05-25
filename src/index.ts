@@ -12,7 +12,11 @@ program
   .description('Starts the proxy server')
   .option('--plugin <name>', 'Adds a plugin by name, can be supplied multiple times', collectValues, [])
   .option('--customPlugin <path>', 'Adds a custom plugin by path', collectValues, [])
-  .option('--port <port>', 'The port to launch the service on', '8080')
+  .option(
+    '--port <port>',
+    'The port to launch the service on. Can also be set using the PORT environment variable',
+    process.env.PORT ?? '8080'
+  )
   .option('--registry <hostname>', 'The host to forward requests to', 'registry.hub.docker.com')
   .option('--http', 'Fall back to using HTTP instead of HTTPS')
   .action((args: StartArguments) => start(args))
