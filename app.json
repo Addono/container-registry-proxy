@@ -1,0 +1,6 @@
+{
+  "name": "Container Registry Proxy",
+  "description": "A proxy for modifying requests to container registries using plugins.",
+  "repository": "https://github.com/Addono/container-registry-proxy",
+  "keywords": ["node", "docker", "registry", "containers"]
+}
