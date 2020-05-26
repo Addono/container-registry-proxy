@@ -1,11 +1,11 @@
 # Container Registry Proxy
 
-[![License](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)][gh-license]
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://img.shields.io/badge/project%20status-Active-greengrass?style=flat-square)](https://www.repostatus.org/#active)
-[![Docker Pulls](https://img.shields.io/docker/pulls/addono/container-registry-proxy?style=flat-square)][hub]
-[![npm](https://img.shields.io/npm/dt/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
-[![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
-[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/stargazers)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![Docker Pulls](https://img.shields.io/docker/pulls/addono/container-registry-proxy?style=flat-square)][crp-hub]
+[![npm](https://img.shields.io/npm/dt/container-registry-proxy?style=flat-square)][crp-npm]
+[![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)][crp-npm]
+[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)][gh-stars]<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -35,7 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have [Yarn](https://yarnpkg.com/en/docs/install) installed to use this repository.
+You need to have [Yarn][yarn-install] installed to use this repository.
 
 ### Installing
 
@@ -85,10 +85,10 @@ Currently, the only supported method of automatically deploying this application
 
 ### Manual
 
-We automatically build and deploy all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
+We automatically build and deploy all [releases][gh-releases] to:
 
-- [NPM](https://www.npmjs.com/package/container-registry-proxy)
-- [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
+- [NPM][crp-npm]
+- [Docker Hub][crp-hub]
 
 #### NPM
 
@@ -161,7 +161,7 @@ docker pull localhost:8080/library/nginx
 
 ### Custom Plugins
 
-Custom plugins are simple JavaScript modules implementing the [`Plugin`](./src/plugins.ts) interface, which are loaded in at runtime. An example of a custom plugin can be found [here](https://github.com/Addono/container-registry-proxy-custom-plugin-example). Assuming we have the `container-regsitry-proxy` installed locally and a plugin in `./dist/plugin.js`, then we can load this plugin using:
+Custom plugins are simple JavaScript modules implementing the [`Plugin`](./src/plugins.ts) interface, which are loaded in at runtime. An example of a custom plugin can be found [here][example-plugin] Assuming we have the `container-regsitry-proxy` installed locally and a plugin in `./dist/plugin.js`, then we can load this plugin using:
 
 ```bash
 container-registry-proxy --customPlugin ./dist/plugin.js
@@ -169,7 +169,7 @@ container-registry-proxy --customPlugin ./dist/plugin.js
 
 ### Creating Custom Plugins
 
-To create your own custom plugin, it is recommended to write it in TypeScript and compile it to JavaScript. It's easiest to fork or copy the [example plugin](https://github.com/Addono/container-registry-proxy-custom-plugin-example) and follow the instructions there, as it already incorporates various best-practices to ease development.
+To create your own custom plugin, it is recommended to write it in TypeScript and compile it to JavaScript. It's easiest to fork or copy the [example plugin][example-plugin] and follow the instructions there, as it already incorporates various best-practices to ease development.
 
 Alternatively, a minimal approach on creating a plugin would follow the following steps:
 
@@ -234,5 +234,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-[hub]: https://hub.docker.com/addono/container-registry-proxy
+[crp-hub]: https://hub.docker.com/addono/container-registry-proxy
+[crp-npm]: https://www.npmjs.com/package/container-registry-proxy
+[example-plugin]: https://github.com/Addono/container-registry-proxy-custom-plugin-example
+[gh-stars]: https://github.com/Addono/container-registry-proxy/stargazers
+[gh-releases]: https://github.com/Addono/container-registry-proxy/releases
+[gh-license]: https://github.com/Addono/container-registry-proxy/blob/master/LICENSE
 [heroku-deploy]: https://heroku.com/deploy?template=https://github.com/addono/container-registry-proxy/tree/master
+[yarn-install]: https://yarnpkg.com/en/docs/install
