@@ -129,11 +129,11 @@ Usage: container-registry-proxy start [options]
 Starts the proxy server
 
 Options:
-  --plugin <name>        Adds a plugin by name, can be supplied multiple times (default: [])
-  --customPlugin <path>  Adds a custom plugin by path (default: [])
-  --port <port>          The port to launch the service on (default: "8080")
-  --registry <hostname>  The host to forward requests to (default: "registry.hub.docker.com")
-  --http                 Fall back to using HTTP instead of HTTPS
+  --plugin <name>        Adds a plugin by name, can be supplied multiple times. Can also be set as a comma separated list using the PLUGINS environment variable. (default: [])
+  --customPlugin <path>  Adds a custom plugin by path Can also be set as a comma separated list using the CUSTOM_PLUGINS environment variable. (default: [])
+  --port <port>          The port to launch the service on. Can also be set using the PORT environment variable (default: "8080")
+  --registry <hostname>  The host to forward requests to. Can also be set using the REGISTRY environment variable. (default: "registry.hub.docker.com")
+  --http                 Fall back to using HTTP instead of HTTPS. Can also be set by setting the HTTP environment variable to "true". (default: false)
   -h, --help             display help for command
 ```
 
