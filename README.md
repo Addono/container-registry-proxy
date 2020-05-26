@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/blob/master/LICENSE)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://img.shields.io/badge/project%20status-Active-greengrass?style=flat-square)](https://www.repostatus.org/#active)
-[![npm](https://img.shields.io/npm/dw/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
+[![npm](https://img.shields.io/npm/dt/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
 [![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
 [![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/network)
