@@ -77,12 +77,20 @@ devspace dev
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
+### Automatic
+
+Currently, the only supported method of automatically deploying this application is by using [Heroku][heroku-deploy].
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)][heroku-deploy]
+
+### Manual
+
 We automatically build and deploy all [releases](https://github.com/Addono/container-registry-proxy/releases) to:
 
 - [NPM](https://www.npmjs.com/package/container-registry-proxy)
 - [Docker Hub](https://hub.docker.com/r/addono/container-registry-proxy)
 
-### NPM
+#### NPM
 
 Install the application locally:
 
@@ -104,7 +112,7 @@ container-registry-proxy --help
 crp --help
 ```
 
-### Docker
+#### Docker
 
 ```bash
 docker run --rm -it -p 8080:8080 --name crp addono/container-registry-proxy --help
@@ -227,3 +235,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 [hub]: https://hub.docker.com/addono/container-registry-proxy
+[heroku-deploy]: https://heroku.com/deploy?template=https://github.com/addono/container-registry-proxy/tree/master
