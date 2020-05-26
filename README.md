@@ -5,10 +5,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/addono/container-registry-proxy?style=flat-square)][hub]
 [![npm](https://img.shields.io/npm/dt/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
 [![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)](https://www.npmjs.com/package/container-registry-proxy)
-[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/stargazers)
-<!--[![GitHub forks](https://img.shields.io/github/forks/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/network)-->
-[![GitHub issues](https://img.shields.io/github/issues/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/pulls)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![GitHub stars](https://img.shields.io/github/stars/Addono/container-registry-proxy?style=flat-square)](https://github.com/Addono/container-registry-proxy/stargazers)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
