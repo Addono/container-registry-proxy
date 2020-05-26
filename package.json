@@ -48,7 +48,7 @@
     "jest": "^26.0.1",
     "lint-staged": "^10.2.6",
     "prettier": "^2.0.5",
-    "semantic-release": "^17.0.7",
+    "semantic-release": "^17.0.8",
     "semantic-release-docker": "^2.2.0",
     "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
