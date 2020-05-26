@@ -83,6 +83,8 @@ Currently, the only supported method of automatically deploying this application
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)][heroku-deploy]
 
+When deploying using Heroku, it is recommended to configure the application using environment variables. Make sure to redeploy the application after changing the environment variables, as to put them into effect.
+
 ### Manual
 
 We automatically build and deploy all [releases][gh-releases] to:
@@ -120,7 +122,7 @@ docker run --rm -it -p 8080:8080 --name crp addono/container-registry-proxy --he
 
 ## 🎈 Usage <a name="usage"></a>
 
-The default configuration of the proxy can be overwritten during startup by adding flags:
+The default configuration of the proxy can be overwritten during startup by adding flags or environment variables:
 
 ```bash
 $ container-registry-proxy start --help
@@ -135,6 +137,16 @@ Options:
   --registry <hostname>  The host to forward requests to. Can also be set using the REGISTRY environment variable. (default: "registry.hub.docker.com")
   --http                 Fall back to using HTTP instead of HTTPS. Can also be set by setting the HTTP environment variable to "true". (default: false)
   -h, --help             display help for command
+```
+
+For example, these two methods of starting the proxy are equivalent:
+
+```bash
+# Using arguments
+container-registry-proxy --plugin semanticChaos --port 8000
+
+# Using environment variables
+PLUGINS=semanticChaos PORT=8000 container-registry-proxy
 ```
 
 Once you have a proxy running, you can use it like this:
