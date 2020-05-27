@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/github/license/Addono/container-registry-proxy?style=flat-square)][gh-license]
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://img.shields.io/badge/project%20status-Active-greengrass?style=flat-square)](https://www.repostatus.org/#active)
+[![Depfu](https://img.shields.io/depfu/Addono/container-registry-proxy?style=flat-square)][crp-depfu]
 [![Docker Pulls](https://img.shields.io/docker/pulls/addono/container-registry-proxy?style=flat-square)][crp-hub]
 [![npm](https://img.shields.io/npm/dt/container-registry-proxy?style=flat-square)][crp-npm]
 [![npm](https://img.shields.io/npm/v/container-registry-proxy?style=flat-square)][crp-npm]
@@ -246,6 +247,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
+[crp-depfu]: https://depfu.com/github/Addono/container-registry-proxy?project_id=12599
 [crp-hub]: https://hub.docker.com/addono/container-registry-proxy
 [crp-npm]: https://www.npmjs.com/package/container-registry-proxy
 [example-plugin]: https://github.com/Addono/container-registry-proxy-custom-plugin-example
