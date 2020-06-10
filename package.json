@@ -46,7 +46,7 @@
     "cz-conventional-changelog": "^3.2.0",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
-    "lint-staged": "^10.2.6",
+    "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "semantic-release": "^17.0.8",
     "semantic-release-docker": "^2.2.0",
