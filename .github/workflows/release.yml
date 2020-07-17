@@ -69,7 +69,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_API_KEY }}
         run: npx semantic-release
-        if: github.ref == 'refs/heads/master' # Only release on master
+        if: github.ref == 'refs/heads/main' # Only release on master
 
       - name: Release (dry-run)
         env:
@@ -78,4 +78,4 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_API_KEY }}
         run: npx semantic-release --dry-run
-        if: github.ref != 'refs/heads/master' # Dry run on all other branches
+        if: github.ref != 'refs/heads/main' # Dry run on all other branches
