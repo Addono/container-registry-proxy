@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "commander": "^5.1.0",
+    "commander": "^6.0.0",
     "snyk": "^1.364.1"
   },
   "devDependencies": {
