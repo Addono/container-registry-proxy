@@ -12,7 +12,7 @@ export interface StartArguments {
 const printArguments = ({ port, registry, http, plugin }: StartArguments) => {
   const settingsFormatted: string = [
     ['PORT', port],
-    ['REGISTRY_HOST', registry],
+    ['REGISTRY', registry],
     ['HTTPS', !http],
     ['PLUGINS', plugin ?? []],
   ]
