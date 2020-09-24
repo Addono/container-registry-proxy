@@ -41,7 +41,7 @@
     "@semantic-release/npm": "^7.0.6",
     "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/jest": "^26.0.13",
-    "@types/node": "^14.10.0",
+    "@types/node": "^14.11.2",
     "codecov": "^3.7.2",
     "cz-conventional-changelog": "^3.2.0",
     "husky": "^4.3.0",
