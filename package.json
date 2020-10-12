@@ -42,7 +42,7 @@
     "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
-    "codecov": "^3.7.2",
+    "codecov": "^3.8.0",
     "cz-conventional-changelog": "^3.2.0",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
