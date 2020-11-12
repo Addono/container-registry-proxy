@@ -31,7 +31,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "commander": "^6.2.0",
-    "snyk": "^1.424.4"
+    "snyk": "^1.425.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
