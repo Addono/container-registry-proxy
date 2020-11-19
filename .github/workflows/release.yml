@@ -12,10 +12,10 @@ jobs:
         node-version: [12.x, 13.x, 14.x]
 
     steps:
-      - uses: actions/checkout@722adc6 # v2
+      - uses: actions/checkout@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@83c9f7a # v1.4.1
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -24,7 +24,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Restore cache
-        uses: actions/cache@70655ec # v1.1.2
+        uses: actions/cache@v1
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
