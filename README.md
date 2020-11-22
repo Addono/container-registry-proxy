@@ -248,7 +248,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 [crp-depfu]: https://depfu.com/github/Addono/container-registry-proxy?project_id=12599
-[crp-hub]: https://hub.docker.com/addono/container-registry-proxy
+[crp-hub]: https://hub.docker.com/r/addono/container-registry-proxy
 [crp-npm]: https://www.npmjs.com/package/container-registry-proxy
 [example-plugin]: https://github.com/Addono/container-registry-proxy-custom-plugin-example
 [gh-stars]: https://github.com/Addono/container-registry-proxy/stargazers
