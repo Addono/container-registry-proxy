@@ -31,7 +31,7 @@ repository:
 
   # Either `true` to allow merging pull requests with a merge commit, or `false`
   # to prevent merging pull requests with merge commits.
-  allow_merge_commit: true
+  allow_merge_commit: false
 
   # Either `true` to allow rebase-merging pull requests, or `false` to prevent
   # rebase-merging.
